@@ -22,9 +22,6 @@ RUN mkdir -p /root/Geospacelab/Data
 RUN mkdir -p /root/.spacepy/data
 RUN mv /app/executable-paper/pydata/spacepy/data/* /root/.spacepy/data/
 
-# cp -R /app/executable-paper/pydata/spacepy/data/* /root/.spacepy/data/
-# rm -r /app/executable-paper/pydata/spacepy/data/*
-
 # Create the conda environment using environment.yml
 RUN conda env create -f /app/environment.yml
 
