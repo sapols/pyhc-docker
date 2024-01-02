@@ -29,8 +29,10 @@ RUN conda env create -f /app/environment.yml
 RUN echo "source activate pyhc-all" > ~/.bashrc
 ENV PATH /opt/conda/envs/pyhc-all/bin:$PATH
 
-# Install additional packages with pip
-RUN pip install --retries 5 --no-cache-dir -r requirements.txt
+# Install additional packages with pip (SpacePy first)
+RUN pip install numpy==1.24.3
+RUN pip install spacepy --no-build-isolation
+RUN pip install --use-pep517 --retries 5 --no-cache-dir -r requirements.txt
 
 # Delete cruft
 RUN rm /app/environment.yml
